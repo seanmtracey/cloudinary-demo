@@ -1,24 +1,76 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+'use strict';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+import { Cloudinary } from "@cloudinary/url-gen";
+import { fill } from "@cloudinary/url-gen/actions/resize";
+import { cartoonify } from "@cloudinary/url-gen/actions/effect";
+import { text } from "@cloudinary/url-gen/qualifiers/source";
+import { source } from "@cloudinary/url-gen/actions/overlay";
+import { TextStyle } from "@cloudinary/url-gen/qualifiers/textStyle";
+import { Position } from "@cloudinary/url-gen/qualifiers/position";
+import { compass } from "@cloudinary/url-gen/qualifiers/gravity";
 
-setupCounter(document.querySelector('#counter'))
+const cld = new Cloudinary({
+	cloud: {
+		cloudName: 'demo'
+	}
+});
+
+const img = cld.image('sample.jpg');
+
+const photoHolder = document.querySelector(".main-photo");
+const imgElement = photoHolder.querySelector("img");
+const btnGroup = document.querySelector(".btn-group");
+const actionBtns = btnGroup.querySelectorAll("[data-action]");
+
+actionBtns.forEach(btn => {
+
+	btn.addEventListener("click", function(e){
+
+		e.preventDefault();
+		e.stopImmediatePropagation();
+
+		const action = this.dataset.action;
+
+		console.log(action);
+
+		applyTransformation(action);
+
+	}, false);
+
+});
+
+function applyTransformation(transformationType){
+
+	console.log(transformationType);
+
+	if(transformationType === "text"){
+
+		img.overlay(
+			source(
+				text(
+					'Flowers!',
+					new TextStyle('Cookie', 150)
+					.fontWeight('bold'))
+					.textColor('#FFF')
+			).position(
+				new Position().gravity(compass('center'))
+			)
+		)
+		
+		imgElement.src = img.toURL();
+
+	}
+
+	if(transformationType === "crop"){
+
+		img.resize(fill().width(250).height(250));
+		imgElement.src = img.toURL();
+
+	}
+
+	if(transformationType === "cartoonify"){
+		img.effect(cartoonify());
+		imgElement.src = img.toURL();
+	}
+
+}
