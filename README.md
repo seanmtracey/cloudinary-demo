@@ -14,9 +14,9 @@ To run the development server, run `npm run dev`. This should start a Vite devel
 
 ## Project Structure
 
-The source files for this demo are in the `application` directory (`index.html`) and in the `application/assets/` directory. 
+The source files for this demo are in the `application` directory.
 
-Within the `application/assets/` directory, you will find a `style.css` and `main.js` file which the `index.html` file will load when accessed through your browser.
+Within the `application/assets` directory, you will find a `style.css` and `main.js` file which the `index.html` file will load when accessed through your browser.
 
 All of the functional code - including the the calls the Cloudinary API - are in the `application/assets/main.js` file.
 
