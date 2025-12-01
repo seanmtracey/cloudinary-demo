@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this tutorial, we're going to take a look at manipulating images using Cloudinary's Image Transformation URL API - a super-powerful interface that we can use to transform, scale, and filters to images just by changing the URL we're using to access the image.
+In this tutorial, we're going to take a look at manipulating images using Cloudinary's Image Transformation URL API - a super-powerful interface that we can use to transform, scale, and add filters to images just by changing the URL we're using to access the image.
 
 This opens up a whole world of possibilities when it comes to delivering images into our websites and applications, with transformations happening on-the-fly, rather than having to preload everything we may want to use pre-emptively into a CMS.
 
