@@ -6,7 +6,7 @@ A small demo app which shows off using the Cloudinary JavaScript SDK to manipula
 
 First, clone this repository to your local system. You can do this with `git clone https://github.com/seanmtracey/cloudinary-demo.git` in your chosen Terminal.
 
-Next, `cd` into the newly created `cloudinary-demo/application` directory , and run `npm install` to install all of the project dependencies. Once that's finished, you'll have everything you need to run the server locally for testing, and for pushing your application to a production environment (if you want to).
+Next, `cd` into the newly created `cloudinary-demo/reference` directory , and run `npm install` to install all of the project dependencies. Once that's finished, you'll have everything you need to run the server locally for testing, and for pushing your application to a production environment (if you want to).
 
 To run the development server, run `npm run dev`. This should start a Vite development server that listens on port `5173` which you can access in a web browser by going directly to `http://localhost:5173` or by clicking [here](http://localhost:5173).
 
@@ -14,11 +14,11 @@ To run the development server, run `npm run dev`. This should start a Vite devel
 
 ## Project Structure
 
-The source files for this demo are in the `application` directory.
+The source files for this demo are in the `reference` directory.
 
-Within the `application/assets` directory, you will find a `style.css` and `main.js` file which the `index.html` file will load when accessed through your browser.
+Within the `reference/assets` directory, you will find a `style.css` and `main.js` file which the `index.html` file will load when accessed through your browser.
 
-All of the functional code - including the the calls the Cloudinary API - are in the `application/assets/main.js` file.
+All of the functional code - including the the calls the Cloudinary API - are in the `reference/assets/main.js` file.
 
 ## Demo Functionality
 
