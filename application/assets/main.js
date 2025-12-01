@@ -43,6 +43,18 @@ function applyTransformation(transformationType){
 
 	console.log(transformationType);
 
+	if(transformationType === "crop"){
+
+		img.resize(fill().width(250).height(250));
+		imgElement.src = img.toURL();
+
+	}
+
+	if(transformationType === "cartoonify"){
+		img.effect(cartoonify());
+		imgElement.src = img.toURL();
+	}
+
 	if(transformationType === "text"){
 
 		img.overlay(
@@ -59,18 +71,6 @@ function applyTransformation(transformationType){
 		
 		imgElement.src = img.toURL();
 
-	}
-
-	if(transformationType === "crop"){
-
-		img.resize(fill().width(250).height(250));
-		imgElement.src = img.toURL();
-
-	}
-
-	if(transformationType === "cartoonify"){
-		img.effect(cartoonify());
-		imgElement.src = img.toURL();
 	}
 
 }
