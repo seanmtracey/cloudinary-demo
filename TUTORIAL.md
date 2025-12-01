@@ -24,13 +24,13 @@ After cloning the Git repo, `cd` into the `cloudinary-demo/scaffold` folder and 
 npm install
 ```
 
-The installation should only take a few seconds, and once it's finished, we're able to use the functions and methods of the SDK to apply transformations as we like in our app.
+The installation should only take a few seconds, and once it's finished, we're able to use the functions and methods of the SDK to apply image transformations as we like in our app.
 
 ## Project Structure
 
 In the `scaffold` directory, there are a bunch of files which will make up our application, but we're only going to be working in the `scaffold/assets/main.js` file. The HTML and CSS files are already complete and ready for us to start building out our functionality.
 
-If you run `npm run dev` in the `scaffold` directory, the Vite server should start up and show us our app which should look like the following:
+If you run `npm run dev` in the `scaffold` directory, the Vite server should start up and show us our app which should look like the following when viewed in a browser:
 
 ![A screenshot of Cloudinary Demo application](./images/1.png "Cloudinary Demo Application")
 
@@ -114,7 +114,7 @@ It's a good start, but it's not very exciting. Fear not, it's about to get reall
 ### Using the Cloudinary SDK
 #### Cropping an Image
 
-You might have noticed in the last chunk of code that we have a commented out function call which passes through the action of the button clicked: `applyTransformation(action);`. This will be a catch-all method which will apply the desired transformation to our image depending on the button that's clicked. 
+You might have noticed in the last chunk of code that we have a commented out function call which passes through the action of the button clicked: `// applyTransformation(action);`. This will be a catch-all method which will apply the desired transformation to our image depending on the button that's clicked. 
 
 After the `.forEach` loop that we used to bind event handlers to our button, define the `applyTransformation` function:
 
@@ -122,17 +122,16 @@ After the `.forEach` loop that we used to bind event handlers to our button, def
 function applyTransformation(transformationType){
 
     if(transformationType === "crop"){
-
         // Crop our image to a square
 
     }
 
     if(transformationType === "cartoonify"){
         // Cartoonify the image
+
     }
 
     if(transformationType === "text"){
-
         // Add a text overlay to our image
 
 	}
@@ -146,7 +145,7 @@ Let's start with cropping.
 
 ## Cropping an image
 
-When we started working on this JavaScript file, we imported all of the methods we wanted to use to make image transformations from the Cloudinary SDK. We also created a variable (`img`) to would reference an image in the demo Cloudinary account that we could apply transformations to. Now it's time to put them to work.
+When we started working on this JavaScript file, we imported all of the methods we wanted to use to make image transformations from the Cloudinary SDK. We also created a variable (`img`) that would reference an image in the demo Cloudinary account that we could apply transformations to. Now it's time to put them to work.
 
 Cropping an image is really simple. In the code block for the`if(transformationType === "crop")` `if` statement, add the following code:
 
@@ -186,7 +185,7 @@ Because we use the same `img` object when applying our transformations, we can b
 
 ## Adding a Text Overlay
 
-And leads us nicely to our final transformation - a text overlay. This functionality is super-useful for watermarking, highlighting, or describing images dynamically, but it it's the most involved function call of our demo. With that in mind, add the following block of code to the code block for the `if(transformationType === "text")` `if` statement, and then we'll break it down into its component parts.
+And that leads us nicely to our final transformation - a text overlay. This functionality is super-useful for watermarking, highlighting, or describing images dynamically, but it it's the most involved function call of our demo. With that in mind, add the following block of code to the code block for the `if(transformationType === "text")` `if` statement, and then we'll break it down into its component parts.
 
 ```javascript
 img.overlay(
