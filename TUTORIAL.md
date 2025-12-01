@@ -12,7 +12,7 @@ So, let's dive straight in!
 
 First things first, we need to set up a development server that we can use to run our application. For this demo, we're going to use Vite, a super light-weight, all-in-one server/bundler that gives us to ability to package up all of the HTML/CSS/JavaScript modules we're going to use to build our app, and let us view it in a browser on our local system.
 
-To get started, run the command `git clone https://github.com/seanmtracey/cloudinary-demo.git` to clone get setup for this tutorial.
+To get started, run the command `git clone https://github.com/seanmtracey/cloudinary-demo.git` to clone the demo repo and get setup for this tutorial.
 
 Once cloned, you'll have both a fully-working reference version of the application that you can just run to try things out (in the `reference` folder), as well as a scaffolded version which you can work in to follow along with this tutorial.
 
