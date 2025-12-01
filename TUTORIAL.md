@@ -12,108 +12,37 @@ So, let's dive straight in!
 
 First things first, we need to set up a development server that we can use to run our application. For this demo, we're going to use Vite, a super light-weight, all-in-one server/bundler that gives us to ability to package up all of the HTML/CSS/JavaScript modules we're going to use to build our app, and let us view it in a browser on our local system.
 
-Open up your Terminal of choice, and create a directory with `mkdir`. In this example, we're going to call our project directory `image-transformation-demo`, but you can call it anything you like.
+To get started, run the command `git clone https://github.com/seanmtracey/cloudinary-demo.git` to clone get setup for this tutorial.
 
-`cd` into the `image-transformation-demo` directory you've just created, and then run `npm create vite@latest`. This will show a little menu asking you some questions about how we'd like to configure Vite to use our project. Select the following options:
+Once cloned, you'll have both a fully-working reference version of the application that you can just run to try things out (in the `reference` folder), as well as a scaffolded version which you can work in to follow along with this tutorial.
 
-- Project name:
-    - (Enter a project name)
-- Select a framework:
-    - Vanilla
-- Select a variant:
-    - JavaScript
-- Use rolldown-vite (Experimental)?:
-    - No
-- Install with npm and start now?
-    - No
+## Installing Dependencies
 
-Once you've entered all of those options, you'll now have a Vite project configured and ready to run the demo Vite server. 
-
-To check everything is ready for us to start building our application, `cd` into the project directory Vite just created for us, and then run the following commands and open up your browser to `http://localhost:5173`.
+After cloning the Git repo, `cd` into the `cloudinary-demo/scaffold` folder and run the following command in your terminal to install the Cloudinary SDK and all other dependencies we'll need to build our demo:
 
 ```bash
 npm install
-npm run dev
-```
-
-![A screenshot of the boilerplate Vite Server](./images/1.png "Vite Demo Page")
-
-We're ready to go!
-
-## Installing the Cloudinary SDK
-
-Now that we have a development server up and running, we can install the Cloudinary `url-gen` package that we'll be using to transform and modify our images as we build out our application.
-
-Run the following command in your terminal:
-
-```bash
-npm i @cloudinary/url-gen  
 ```
 
 The installation should only take a few seconds, and once it's finished, we're able to use the functions and methods of the SDK to apply transformations as we like in our app.
 
 ## Project Structure
 
-We now have everything we need to start building and running our application, so it's time to dump the code of the Vite demo app and replace it with our own.
+In the `scaffold` directory, there are a bunch of files which will make up our application, but we're only going to be working in the `scaffold/assets/main.js` file. The HTML and CSS files are already complete and ready for us to start building out our functionality.
 
-Delete the `./src` directory and the `./public` directory. You can run the following command to do this for you if you don't want to do it with your GUI.
+If you run `npm run dev` in the `scaffold` directory, the Vite server should start up and show us our app which should look like the following:
 
-```bash
-rm -rf ./src ./public
-```
+![A screenshot of Cloudinary Demo application](./images/1.png "Cloudinary Demo Application")
 
-Then, run the following command to create the files we'll be coding in for the rest of our project:
-
-```bash
-mkdir assets && touch ./assets/main.js ./assets/style.css
-```
-
-...and then replace the contents of the `index.html` file and ./assets/`style.css` with the following code respectively:
-
-index.html:
-```html
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-	<link rel='stylesheet' href='/assets/style.css' />
-</head>
-<body>
-
-	<div class="main">
-	
-		<div class="main-photo">
-			<img src="https://res.cloudinary.com/demo/image/upload/sample.jpg" />
-		</div>
-	
-		<div class="btn-group">
-			<div class="btn" data-action="text">Text overlay</div>
-			<div class="btn" data-action="crop">Crop to square </div>
-			<div class="btn" data-action="cartoonify">Cartoonify</div>
-		</div>
-	
-	</div>
-
-	<script type="module" src="/assets/main.js"></script>
-
-</body>
-```
-
-style.css:
-```css
-.main{height:100%;max-width:800px;width:100%;margin:auto;display:flex;align-items:center;justify-content:center;flex-direction:column}.main-photo{width:500px;height:333px;border:5px solid #000;margin:20px 0 20px 0;object-fit:contain;display:flex;align-items:center;justify-content:center;width:max-content}.main-photo img{height:100%}.btn-group{margin:0 90px}.btn{margin:10px;padding:2px 5px 2px 5px;float:left;width:100px;border:1px solid #000;background-color:lightblue;text-align:center}.btn:hover{cursor:pointer}
-```
-
-The CSS isn't that important, but let's take a close look at the HTML. You should notice that we have an `<img>` element which points to an image hosted in the in the Cloudinary demo account that we're going to display and transform, and a bunch of buttons which we'll be able to click to apply transformations to that image.
-
-Those buttons don't do much at the moment, but that's about to change!
+Right now, we have a bunch of buttons that don't do very much, but that's about to change!
 
 ## Let's Code!
 
 ### Importing the SDK
 
-Open up the `./assets/main.js` file in your favourite IDE. This is where we'll write our code that handles our buttons being clicked and interacts with the Cloudinary API via the SDK to generate the effect we want for each one.
+Open up the `./scaffold/assets/main.js` file in your favourite IDE. This is where we'll write our code that handles our buttons being clicked and interacts with the Cloudinary API via the SDK to generate the effect we want for each one.
 
-First, we'll import all of the modules that we're going to use from the `@cloudinary/url-gen` package we installed just a few minutes ago. Add the following to the top of the file:
+First, we'll import all of the modules that we're going to use from the `@cloudinary/url-gen` package we installed just a few minutes ago when we ran `npm install`. Add the following to the top of the file:
 
 ```javascript
 import { Cloudinary } from "@cloudinary/url-gen";
