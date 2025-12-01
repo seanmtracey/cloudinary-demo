@@ -1,4 +1,4 @@
-# Cloudinary Tutorial
+# Getting Started with Image Transformation URLs
 
 ## Introduction
 
